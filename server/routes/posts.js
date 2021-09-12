@@ -9,11 +9,12 @@ import {
 } from '../controllers/posts.js';
 
 const router = express.Router();
+import auth from '../middleware/auth.js';
 
 router.get('/', getPosts);
-router.post('/createPost', createPost);
-router.patch('/:id/updatePost', updatePost);
-router.delete('/:id/deletePost', deletePost);
-router.patch('/:id/likePost', likePost);
+router.post('/createPost', auth, createPost);
+router.patch('/:id/updatePost', auth, updatePost);
+router.delete('/:id/deletePost', auth, deletePost);
+router.patch('/:id/likePost', auth, likePost);
 
 export default router;
